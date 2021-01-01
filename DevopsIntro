@@ -1,0 +1,75 @@
+
+
+Take Dev and Anna as an example
+
+Dev Team-
+------------
+Manages the code
+Design few features
+Testing team is also part of it
+
+Team operations
+-----------------
+Manages the server
+Scaling issues
+security
+backup
+
+
+Problems:
+1.Settings up the environments using conventional tools(shell scripts)
+- Creating environments in non declarative method
+
+2.Code in consistency 
+3.Scaling issues.
+4.Developes need to access the application logs :- Traditional shell scripts to pull the logs
+
+Explain Devops log
+
+
+what is the END goal :- we need to make push the releases and make customers Happy
+
+
+Devops 
+Integrate developers and operations teams
+in order to improve collaboration and productivity 
+by automating infrastructure ,automating workflows
+and continuously  measuring applications
+performance
+
+
+Devops is philosophy  moving things from development stage to productions
+
+> Automation
+ -> code testing
+ -> work flows
+ -> Automate infrastructure 
+
+
+Write softwares which is developted
+tested and release and monitored  rather than
+completing the code in one single shot and testing it
+
+>They have a good consistancy of deploments in all the environments
+>Good frequency of deployments
+
+Source control 
+
+
+
+END goal:- To provide customers environments without any issues
+benefits
+
+>- Time to market
+
+Devops :- Equation
+Change in Mindset + New tool :- Prepared for new fast paced world
+
+
+Understanding Devops tool kit:-
+A tool that sets the environment equally in N servers automatically (Software configuration tool);- Ansible,salt,Puppet
+Every thing starts with a Automated code deployment:- which does code building ,testing and deploying :- Jenkins
+All the codes are kept in repository which is called Git :- which will track all the code change and code management
+A tool that manages the application,logs{system, application statitics} :- Monitoring
+
+A infrastructure that holds all the Above Name as infrastructure as service Cloud
