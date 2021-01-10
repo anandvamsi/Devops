@@ -1,0 +1,42 @@
+AnsibleDay1
+
+what is meant by configration mangment system
+what is Ansible
+Ansible vs chef,puppet
+Architecture of Ansible
+	- Master and salve
+	- passwordless ssh
+Understanding Idempotency
+
+Installing Ansible
+Configuring clients
+
+
+
+Configruration Managment system
+--------------------------------
+ systems engineering process for establishing and maintaining consistency of a product's performance, functional, and physical attributes with its requirements, design, and operational information throughout its life.
+
+ By using automation, it's easier to build in checks and redundancies, improving the potential for omissions due to human error and the accuracy for keeping assets in the desired state
+
+ Without automation, a single engineer forgetting to update a piece of software can leave a system with an outdated version of the software that has a known vulnerability listed on CVE. This vulnerability could be exploited to spread computer worms, install ransomware or another type of malware. 
+
+ Configuration management applies to a variety of systems, but most often, you’ll be concerned with these:
+Servers
+Databases and other storage systems
+Operating systems
+Networking 
+Applications
+Software
+
+Some of the Benefits of CMS
+----------------------------
+Reduced risk of outages and security breaches through visibility and tracking of the changes to your systems.
+- Usecase Patching
+Cost reduction by having detailed knowledge of all the elements of your configuration, avoiding wasteful duplication of your technology assets.
+- Usecase:- No proper report of deployment report(Step by step)
+Improved experience for your customers and internal staff  by rapidly detecting and correcting improper configurations that could negatively impact performance
+- Usecase:- Mis configraion of settings.
+
+
+
