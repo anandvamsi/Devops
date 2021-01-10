@@ -13,6 +13,7 @@ Configuring clients
 
 
 
+
 Configruration Managment system
 --------------------------------
  systems engineering process for establishing and maintaining consistency of a product's performance, functional, and physical attributes with its requirements, design, and operational information throughout its life.
@@ -38,5 +39,64 @@ Cost reduction by having detailed knowledge of all the elements of your configur
 Improved experience for your customers and internal staff  by rapidly detecting and correcting improper configurations that could negatively impact performance
 - Usecase:- Mis configraion of settings.
 
+
+
+
+Ansible and Architecture
+--------------------------
+Ansible is simple open source IT engine which automates application deployment,orchestration, cloud provisioning and many other IT tools.
+Ansible is easy to deploy because it does not use any agents or custom security infrastructure
+
+
+#Writing code in Ansible
+Ansible uses playbook to describe automation jobs, and playbook uses very simple language i.e. YAML
+It’s a human-readable data serialization language & is commonly used for configuration files, but could be used in many applications
+Hence the advantage is that even the IT infrastructure support guys can read and understand the playbook and debug if needed
+
+Ansible is completely agentless which means Ansible works by connecting your nodes through ssh(by default). But if you want other method for connection like Kerberos, Ansible gives that option to you.
+
+After connecting to your nodes, Ansible pushes small programs called as “Ansible Modules”. Ansible runs that modules on your nodes and removes them when finished
+
+Installation process
+--------------------
+
+There are two types of machines:
+- Control machines
+- Remote machine
+
+
+Installation on control machines
+------------------------------------
+$ sudo apt-get update 
+$ sudo apt-get install software-properties-common 
+$ sudo apt-add-repository ppa:ansible/ansible $ sudo apt-get update 
+$ sudo apt-get install ansible
+
+
+Important files of Ansible
+--------------------------
+/etc/ansible/ansible.cfg
+/etc/ansible/roles/ 
+/etc/ansible/hosts
+
+
+checking the version after installation
+~# ansible --version
+ansible 2.9.16
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/anand/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/dist-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 2.7.6 (default, Jun 22 2015, 17:58:13) [GCC 4.8.2]
+(base) root@ubuntu:~#
+
+
+ ##Adding a sudo user in all the 3 servers
+ useradd -m ansibleuser
+ useradd -aG sudo ansibleuser
+ passwd ansibleuser
+
+
+#Create a keygen for ansibleuser in the master server and copy id.rsa.pub to salves ~ansibleuser/.ssh/authorizedkeys
 
 
