@@ -1,0 +1,186 @@
+Anible Day2
+
+what are inventories
+inventory files
+Configuring inventories
+Inventories var files
+
+
+Ansible Inventory
+Ansible works against multiple systems in your infrastructure at the same time.
+ It does this by selecting portions of systems listed in Ansible’s inventory file, which defaults to being saved in the location /etc/ansible/hosts  can specify a different inventory file using the -i <path> option on the command line.
+
+
+Example:-
+mail.example.com
+
+[webservers]
+foo.example.com
+bar.example.com
+
+[dbservers]
+one.example.com
+two.example.com
+three.example.com
+
+
+Note:: Its ok to put more than one system in one or more groups.
+for instance a server could be both a webserver and a dbserver
+
+
+Security reason if ssh port is different we need to mention that along with hostname
+one.example.com:678
+
+
+
+Other examples of inventory
+[webservers]
+www[01:50].example.com
+
+
+[databases]
+db-[a:f].example.com
+
+#Ansible host with connection variables
+[targets]
+localhost              ansible_connection=local
+other1.example.com     ansible_connection=ssh        ansible_user=mpdehaan
+other2.example.com     ansible_connection=ssh        ansible_user=mdehaa
+
+
+Inventory with variables.
+[atlanta]
+host1 http_port=80 maxRequestsPerChild=808
+host2 http_port=303 maxRequestsPerChild=909
+
+
+
+Group of groups and variables
+host1
+host2
+
+[raleigh]
+host2
+host3
+
+[southeast:children]
+atlanta
+raleigh
+
+[southeast:vars]
+some_server=foo.southeast.example.com
+halon_system_timeout=30
+self_destruct_countdown=60
+escape_pods=2
+
+
+
+
+
+
+#Setting up the invetory--> In Master server
+/etc/ansible/hosts
+[webserver]
+slaves_IP
+
+
+
+#Connectivity checking 
+#Executions in the master server
+~$ ansible all -m ping
+192.168.150.129 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+
+Note: Above will login as the logged user and execute the module
+-m is the module
+
+#To begin individual server
+ansible -m ping 192.168.150.129
+
+
+#if you want to login to login to different user
+ansible all -m ping -u <username>
+
+
+#Using Ask password method
+ansible all -m ping --ask-pass
+SSH password:
+192.168.150.129 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+
+
+
+
+#Shell module
+ansible all -m shell -a "ls -l /tmp"
+ansible all -m shell -a "hostname"
+192.168.150.129 | CHANGED | rc=0 >>
+ubuntu-slave1
+ansible all -m shell -a "uptime"
+192.168.150.129 | CHANGED | rc=0 >>
+ 06:31:14 up  4:56,  2 users,  load average: 0.02, 0.09, 0.08
+
+
+
+"
+
+
+##File based commands
+##reating a directory
+ ansible all -m file "dest = /tmp/newfolder  mode = 777 owner = user1 group = user1 state = directory" 
+ ansible all -m file -a "dest=/tmp/test mode=755 owner=ansibleuser group=ansibleuser state=directory"
+
+#copying a single file
+ ansible all -m copy -a "src=/etc/hosts dest=/tmp/hosts
+
+#To delete the directory
+ ansible webservers -m file -a "dest=/path/to/c state=absent
+
+
+#Package based <becoming root user>
+
+Before this module make sure apt-get update
+ansible --become -K all -m  apt -a "name=apache2 state=present"
+
+#Install the latest version
+ansible all -m apt -a "name=screen state=latest" --become -K
+
+TO remove a package
+ansible all -m apt -a "name=screen state=absent" --become -K
+
+
+##Deployment
+ansible all -m git -a "repo=https://github.com/trekhleb/javascript-algorithms.git dest=/tmp/repo
+
+
+
+#Services
+ ansible webservers -m service -a "name=apache2 state=started" --become -K
+ ansible webservers -m service -a "name=apache2 state=stopped" --become -K
+ ansible webservers -m service -a "name=apache2 state=restarted" --become -K
+
+
+
+
+
+
+#custom inventory file
+ansible all -m ping -i my_custom_inventory
+
+#shll 
+
+
+
+
+#Reference
+https://www.digitalocean.com/community/cheatsheets/how-to-use-ansible-cheat-sheet-guide
