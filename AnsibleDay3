@@ -1,0 +1,114 @@
+
+#Ansible facts
+#Introduction to YAML file
+#Creating first playbooks
+#Playbooks with variables
+#Tags
+#extra variables
+
+
+
+#Ansible facts
+Ansible facts are nothing but system properties or pieces of information about remote nodes that you have connected to. This information includes the System architecture, the OS version, BIOS information, system time and date, system uptime, IP address, and hardware information to mention just a few.
+
+Ansible facts are handy in helping the system administrators which operations to carry out, for instance, depending on the operating system, they are able to know which software packages need to be installed, and how they are to be configured, etc
+
+
+ ansible all  -m setup
+
+ ansible all -m setup
+192.168.150.129 | SUCCESS => {
+    "ansible_facts": {
+        "ansible_all_ipv4_addresses": [
+            "192.168.150.129"
+        ],
+        "ansible_all_ipv6_addresses": [
+            "fe80::20c:29ff:fee2:3d02"
+        ],
+        "ansible_apparmor": {
+            "status": "enabled"
+        },
+        "ansible_architecture": "x86_64",
+        "ansible_bios_date": "07/31/2013",
+        "ansible_bios_version": "6.00",
+        "ansible_cmdline": {
+            "BOOT_IMAGE": "/boot/vmlinuz-3.13.0-24-generic",
+            "find_preseed": "/preseed.cfg",
+            "noprompt": true,
+            "quiet": true,
+            "ro": true,
+            "root": "UUID=715c9efe-0f8f-42fc-9515-4b0dc0e64854"
+        },
+
+.................................
+..................................
+
+
+Use case:
+While deploying a NTP application/hosts file
+
+<html>
+<center>
+   <h1> The hostname of this webserver is {{ ansible_hostname }}</h1>
+   <h3> It is running on {{ ansible_os_family}}system </h3>
+</center>
+</html>
+
+
+ Facts section data:
+ ansible_architecture
+ansible_bios_date
+ansible_bios_version
+ansible_date_time
+ansible_machine
+ansible_memefree_mb
+ansible_os_family
+ansible_selinux
+
+##Creating custom facts
+#mkdir -p /etc/ansible/facts.d
+# vim /etc/ansible/facts.d/date_time.fact
+
+#!/bin/bash
+DATE=`date`
+echo "{\"date\" : \"${DATE}\"}"
+
+chmod +x /etc/ansible/facts.d/date_time.fact
+
+ansible localhost -m setup | grep date
+        "ansible_bios_date": "07/31/2013",
+        "ansible_date_time": {
+            "date": "2021-01-12",
+
+
+YAML
+ Ansible uses YAML because it is very easy for humans to understand, read and write when compared to other data formats like XML and JSON
+ YAML uses simple key-value pair to represent the data.
+
+ Example:- A student record:
+--- #Optional YAML start syntax 
+james: 
+  name: james john 
+  rollNo: 34 
+  div: B 
+  sex: male
+
+## Representing a list
+ ---
+countries:  
+   - America 
+   - China 
+   - Canada 
+   - Iceland
+
+## With dictonary 
+
+james: 
+   name: james john 
+   rollNo: 34 
+   div: B 
+   sex: male 
+   likes: 
+      - maths 
+      - physics 
+      - english
