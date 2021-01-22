@@ -1,0 +1,25 @@
+---
+- hosts: all
+  gather_facts: yes
+  vars_files:
+    - packages.yml
+
+   vars_prompt:
+     - name: localpath
+       prompt: Enter the path
+
+
+  tasks:
+  - name: "Install a package"
+    debug:
+      msg: "The name of the package from the variable file {{ package }}"
+
+  - name: "Copy the config file"
+    copy:
+      src: "{{ localpath }}"
+      dest: /tmp/
+
+
+>>>>--------------packages.yml------------->>>
+---
+package: finger
