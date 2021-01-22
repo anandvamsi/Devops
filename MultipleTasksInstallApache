@@ -1,0 +1,30 @@
+#Install apache2 and checks the status using Adhoc command
+
+
+---
+- hosts: webservers
+  gather_facts: yes
+
+
+  tasks:
+  - name: "Install apache server"
+    apt:
+      name: apache2
+      state: latest
+
+  - name: "Restart the service"
+    service:
+      name: apache2
+      state: restarted
+
+
+ansible-playbook  InstallApache.yaml  -K
+
+ansibleuser@ubuntu-master:~/playbooks$ ansible webservers -m command -a "service apache2 status" -K
+BECOME password:
+[WARNING]: Consider using the service module rather than running 'service'.  If you need to use command because service is insufficient you can add 'warn: false' to this command task or set 'command_warnings=False' in ansible.cfg to get
+rid of this message.
+192.168.150.129 | CHANGED | rc=0 >>
+ * apache2 is running
+192.168.150.131 | CHANGED | rc=0 >>
+ * apache2 is running
