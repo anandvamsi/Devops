@@ -16,5 +16,5 @@
 
 
 >>Execute the playbook with extra vars
-ansible-playbook  extravars.yaml --extra-vars "extra_var=192.168.150.131"
+ansible-playbook  extravars.yaml --extra-vars extra_var=192.168.150.131
 
