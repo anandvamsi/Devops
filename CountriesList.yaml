@@ -1,0 +1,15 @@
+---
+- hosts: all
+  gather_facts: no
+  vars:
+    countries:
+      - india
+      - japan
+      - dubai
+      - bhutan
+
+  tasks:
+  - name: "Printing the countries list"
+    debug:
+      msg: "The first one is {{countries[:3] }}"
+
