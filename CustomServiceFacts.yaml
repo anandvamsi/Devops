@@ -1,0 +1,43 @@
+ansibleuser@ubuntu-master:~/playbooks$ cat CustomServiceFacts.yaml
+---
+- hosts: webservers
+  gather_facts: yes
+
+  tasks:
+  - name: "Collect custom facts"
+    service_facts:
+    register: state
+
+  - name: "Debug the service facts"
+    debug:
+      var: state
+
+----------output------------
+
+Debug the service facts] ************************************************************************************
+ok: [192.168.150.129] => {
+    "state": {
+        "ansible_facts": {
+            "services": {
+                "apache2": {
+                    "name": "apache2",
+                    "source": "sysv",
+                    "state": "running"
+                },
+                "apparmor": {
+                    "name": "apparmor",
+                    "source": "sysv",
+                    "state": "stopped"
+                },
+                "bootmisc.sh": {
+                    "goal": "start",
+                    "name": "bootmisc.sh",
+                    "source": "upstart",
+                    "state": "running"
+                },
+                "checkfs.sh": {
+                    "goal": "start",
+                    "name": "checkfs.sh",
+                    "source": "upstart",
+                    "state": "running"
+                },
