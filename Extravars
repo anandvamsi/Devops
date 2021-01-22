@@ -1,0 +1,20 @@
+---
+- hosts: '{{extra_var}}'
+  gather_facts: yes
+
+
+  tasks:
+  - name: "Install apache server"
+    apt:
+      name: apache2
+      state: latest
+
+  - name: "Restart the service"
+    service:
+      name: apache2
+      state: restarted
+
+
+>>Execute the playbook with extra vars
+ansible-playbook  extravars.yaml --extra-vars "extra_var=192.168.150.131"
+
