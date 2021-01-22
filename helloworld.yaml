@@ -1,0 +1,8 @@
+- hosts: all
+  vars:
+    greetings: "Hello world"
+
+  tasks:
+  - name: "My frist program"
+    debug:
+      msg: "{{ greetings }}"
