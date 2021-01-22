@@ -1,0 +1,8 @@
+---
+- hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: "print the hostnama and ip address"
+    debug:
+      msg: "The hostname is {{ ansible_hostname }} and ipadddress is {{ ansible_default_ipv4.address }}"
