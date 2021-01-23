@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: yes
+
+
+  tasks:
+  - name: "Copy the data files to location"
+    copy:
+      src: /tmp/{{ item }}
+      dest: /home/ansibleuser/files
+    with_items:
+    - file1.data
+    - file2.data
