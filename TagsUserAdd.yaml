@@ -1,0 +1,29 @@
+---
+- hosts: all
+  gather_facts: yes
+
+  tasks:
+  - name: "Add a user to the system"
+    user:
+      name: newuser
+      state: present
+      groups: sudo
+      createhome: yes
+    become: yes
+    tags:
+    - DeployUser
+    - adduser
+
+  - name: "Adding the Authorized keys"
+    authorized_key:
+      user: newuser
+      key: "{{ item }}"
+    with_file: /home/ansibleuser/.ssh/id_rsa.pub
+    become: yes
+    tags:
+    - DeployUser
+    - KeyAdd
+
+
+ansible-playbook  TagsUserAdd.yaml --tag DeployUser -K // This will deploy both the tasks
+ ansible-playbook  TagsUserAdd.yaml --tag KeyAdd -K // This will execute only one task.
