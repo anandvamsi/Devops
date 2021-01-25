@@ -1,0 +1,24 @@
+---
+- hosts: all
+  gather_facts: yes
+
+  tasks:
+  - name: "moving the shell script"
+    copy:
+      src: /home/ansibleuser/playbooks/myscript.sh
+      dest: /home/ansibleuser/myscript.sh
+      mode: a+x
+    tags:
+    - copy
+    - backup
+
+  - name: "Setting up crontab"
+    cron:
+      name: "Backup script"
+      user: ansibleuser
+      minute: 30
+      hour: 03
+      job: /home/ansibleuser/myscript.sh
+    tags:
+    - backup
+    - cron
