@@ -1,0 +1,16 @@
+#Adding a key file to the users home directory 
+
+---
+- hosts: dbservers[-1]
+  become: yes
+
+  tasks:
+  - name: "Adding the Authorized keys"
+    authorized_key:
+      user: ansibleuser
+      key: "{{ item }}"
+    with_file: /home/ansibleuser/.ssh/id_rsa.pub
+
+Note:
+  - This is first time setup we need to user -k for supplying ssh password -K for sudo password.
+ansible-playbook  Authorized_keys.yaml -Kk -vv
