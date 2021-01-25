@@ -28,5 +28,10 @@
 ansible-playbook  TagsUserAdd.yaml --tag DeployUser -K // This will deploy both the tasks
 ansible-playbook  TagsUserAdd.yaml --tag KeyAdd -K // This will execute only one task.
 
-To skip specifc tag
+
+
+#To skip specifc tag
 ansible-playbook  TagsUserAdd.yaml --skip-tags KeyAdd -K
+
+#To have multiple Tags
+ansible-playbook TagsUserAdd.yaml -t DeployUser,KeyAdd -K
