@@ -1,0 +1,30 @@
+---
+
+- hosts: all
+  gather_facts: yes
+  become: yes
+
+  tasks:
+  - name: "Install Apache server"
+    apt:
+      name: apache2
+      state: latest
+
+  - name: "Copy my web page"
+    copy:
+      src: /home/ansibleuser/index.html
+      dest: /var/www/html/index.html
+    notify:
+    - Restart apache2
+
+  handlers:
+  - include: handlers/RestartApache.yaml
+
+--------------->>----------------------------------------------
+
+ cat handlers/RestartApache.yaml
+---
+- name: "Restart apache2"
+  service:
+    name: apache2
+    state: restarted
