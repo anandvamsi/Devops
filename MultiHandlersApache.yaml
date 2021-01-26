@@ -1,0 +1,34 @@
+---
+
+- hosts: all
+  gather_facts: yes
+  become: yes
+
+  tasks:
+  - name: "Install Apache server"
+    apt:
+      name: apache2
+      state: latest
+
+  - name: "Copy the script"
+    copy:
+      src: /home/ansibleuser/playbooks/myscript.sh
+      dest: /tmp/myscript.sh
+      mode: a+x
+
+  - name: "Copy my web page"
+    copy:
+      src: /home/ansibleuser/index.html
+      dest: /var/www/html/index.html
+    notify:
+    - Restart apache2
+    - Execute shell script
+
+  handlers:
+  - name: "Restart apache2"
+    service:
+      name: apache2
+      state: restarted
+
+  - name: "Execute shell script"
+    shell: /tmp/myscript.sh
