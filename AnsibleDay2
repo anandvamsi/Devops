@@ -76,6 +76,22 @@ escape_pods=2
 
 
 
+Other examples for iterations
+------------------------------
+[webservers]
+cobweb
+webbing
+weber
+
+webservers[0]       # == cobweb
+webservers[-1]      # == weber
+webservers[0:2]     # == webservers[0],webservers[1]
+                    # == cobweb,webbing
+webservers[1:]      # == webbing,weber
+webservers[:3]      # == cobweb,webbing,we
+
+
+
 
 
 #Setting up the invetory--> In Master server
