@@ -1,0 +1,122 @@
+##Ansible module cheat sheet
+----------------------------------
+
+#git
+git: repo=https://gist.github.com/c454e2e839fcb20605a3.git dest=/opt/flask-demo
+notify:
+- restart flask app
+
+#selinux
+selinux: 
+  policy=targeted 
+  state=permissive
+
+#service
+service: 
+  name=flask-demo
+  state=restarted
+
+service:
+name: firewalld
+enabled: true
+state: started
+
+
+#users
+user:
+  name: "{{ item }}"
+  state: present
+  generate_ssh_key: yes
+with_items:
+- sshuser1
+- sshuser2
+- sshuser3
+
+#python-module :- pip
+pip: 
+  name=flask
+
+#template
+template: 
+  src=../files/flask.conf 
+  dest=/etc/nginx/conf.d/
+notify:
+- restart nginx
+
+#yum
+yum:
+  name=nginx
+  state=installed
+
+yum:
+  name:
+  - httpd
+  - firewalld
+  state: latest
+
+yum:
+  name:
+  - "{{ web_pkg }}"
+  - "{{ firewall_pkg }}"
+  - "{{ python_pkg }}"
+  state: latest
+
+yum:
+  name: "{{ item }}"
+  state: installed
+with_items:
+  - postfix
+  - mariadb-server
+
+
+
+copy:
+  content: "Welcome to the example.com intranet!\n"
+  dest: /var/www/html/index.html
+
+copy:
+content: "{{ ansible_fqdn }} has been customized using Ansible on the
+{{ ansible_date_time.date }}\n"
+dest: /var/www/html/index.html
+
+
+
+firewalld:
+  service: http
+  permanent: true
+  state: enabled
+  immediate: yes
+
+get_url:
+url: "http://materials.example.com/grading/var/www/html/index.php"
+dest: /var/www/html/index.php
+mode: 0644
+
+#include tasks
+name: Includes the tasks file and defines the variables
+include: environment.yml
+vars:
+  package: mariadb-server
+  service: mariadb
+  state: started
+register: output
+
+file:
+  path: "{{ paths.dbpath }}"
+  state: directory
+  mode: 0755
+register: result
+
+
+#Tags
+- include: common.yml
+tags:
+  - webproxy
+  - webserver
+
+#Roles
+roles:
+  - { role: databases, tags: ['production', 'staging'] }
+
+##Getting the value for env variable
+lookup('env', 'HOME') returns "/Users/Gonzalo" 
