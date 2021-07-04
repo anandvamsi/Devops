@@ -73,3 +73,83 @@ All the codes are kept in repository which is called Git :- which will track all
 A tool that manages the application,logs{system, application statitics} :- Monitoring
 
 A infrastructure that holds all the Above Name as infrastructure as service Cloud
+
+
+
+
+
+
+#############################################################################################################################
+
+
+
+What is Devops.
+
+Public Answers:-
+- Automation
+- Strategy
+- Beliefs 
+
+
+##Job Roles and Moto:-
+In Development we have developes,Testing,DB testing ..etc
+In Operations we haeve sys admins,cloud engineers,DB admins and security professional.
+
+
+Aim of Both the teams are keep the software application up and running
+
+if we make quick changes, that would then stability becomes the problem.
+ 
+we are living in the world where there will frequent changes,if not we might lose the business.
+Example whatsapp.
+
+In shot:-
+- Developers aim to create latest features quickly and rapidly
+- Operations aim to keep systems stable.
+- Quick changes are the user demand
+- User also needs stable software or apps.
+
+
+DevOps objective is to Deliver latest and greatest features to the stability. Its not more about creating featutre and delivering it.
+
+
+
+
+
+
+Solution: 
+From inital step , we need to establish communication b/w Developer and operations.
+meaning Developer needs to understand the operations and vice versa
+
+
+- Devops is practice of operations and development engineers
+participating together in etire service lifecycle from design through development process.
+
+
+- where as the waterfall model operations and developers works seperate often leads to misunderstanding.
+
+
+Devops Life cycle:-
+- Create serves if dont exist
+- Install and setup prerequisite dependencies
+- Deploy software to servers
+- Do config changes to OS software
+- Setup Monitoring
+- Feedback and Report.
+
+
+
+As soon we get new code.
+- Dev team push the code to Centralized place
+- Fetch the developer code
+- validate the code.
+- Build and test the code.
+- Package it to distributed format
+- Release it.
+
+
+
+
+
+
+
