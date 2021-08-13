@@ -1,0 +1,48 @@
+---
+- name: "Taking the AMI of ec2 instnaces"
+  hosts: localhost
+  vars_files:
+    - instances_ids.yml
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /bin/python3
+  tasks:
+
+  - name: Basic AMI Creation
+    amazon.aws.ec2_ami:
+      instance_id: "{{ item }}"
+      wait: yes
+      region: us-west-2
+      no_reboot: yes
+      name: Instance-{{ item }}
+      tags:
+        Name: Instance-{{ item }}
+        Service: TestService
+    with_items:
+      - "{{ instances }}"
+    register: image_id_data
+
+
+  - name: Copy AMI proces
+    community.aws.ec2_ami_copy:
+      source_region: us-west-2
+      region: us-west-1
+      name: "{{ item.invocation.module_args.instance_id }}"
+      source_image_id: "{{ item.image_id }}"
+    with_items: "{{ image_id_data.results }}"
+
+#  - debug:
+#      msg: "The name is {{ item.image_id }}"
+#    with_items: "{{ image_id_data.results }}"
+
+
+
+-----------------------------------------------------
+///instances_ids.yml
+instances:
+ - i-06XXXXXX
+ - i-0e585XXXXX
+ - i-0XXXXX
+ - i-03XXXXX
+ - i-05c147a246XXXXXX
+ - i-06c5cXXXXX
