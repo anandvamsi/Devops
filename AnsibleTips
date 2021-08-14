@@ -1,0 +1,7 @@
+#To display the time takeby each task there is a setting availble which needs to configure at ansible.cfg 
+
+// Ansible.cfg
+[defaults]
+inventory = hosts
+callback_whitelist = profile_tasks
+deprecation_warnings = false
