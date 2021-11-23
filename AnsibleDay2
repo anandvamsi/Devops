@@ -56,6 +56,7 @@ host2 http_port=303 maxRequestsPerChild=909
 
 
 Group of groups and variables
+[atlanta]
 host1
 host2
 
