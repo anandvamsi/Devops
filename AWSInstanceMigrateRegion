@@ -1,3 +1,6 @@
+
+ansible-galaxy collection install amazon.aws
+
 ---
 - name: "Taking the AMI of ec2 instnaces"
   hosts: localhost
