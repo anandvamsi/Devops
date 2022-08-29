@@ -1,5 +1,11 @@
+#Module information
+ansible-doc copy
+
 #List all the modules
 ansible-doc -l
 
 #see other options of the reboot
 ansible-doc -s reboot
+
+#To Find the file Associated with Module
+ansible-doc -F
