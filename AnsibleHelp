@@ -1,0 +1,5 @@
+#List all the modules
+ansible-doc -l
+
+#see other options of the reboot
+ansible-doc -s reboot
