@@ -1,0 +1,17 @@
+#syntax 
+ansible <inventory> <modulename> <parameters>
+
+ping
+ansible all -m ping 
+
+shell 
+ansible all -m shell -a "uptime"
+
+command 
+ansible all -m shell -a "uptime"
+
+copy
+ansible all -m copy -a "src=/etc/hosts dest=/tmp/host" 
+
+file #Create a directory with permission 
+ansible all -m file -a "dest=/tmp/testing  mode=700 owner=anand state=directory"
