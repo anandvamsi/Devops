@@ -1,0 +1,14 @@
+- hosts: all
+  become: yes
+
+  tasks:
+  - name: "Installing the packages"
+    yum:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - screen
+      - vim
+      
+  >>
+  ansible-playbook yum_with_items.yml -k -K
