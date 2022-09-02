@@ -1,0 +1,60 @@
+#syntax 
+ansible <inventory> <modulename> <parameters>
+
+ping
+ansible all -m ping 
+
+shell 
+ansible all -m shell -a "uptime"
+
+command 
+ansible all -m shell -a "uptime"
+
+copy
+ansible all -m copy -a "src=/etc/hosts dest=/tmp/host" 
+
+file #Create a directory with permission 
+ansible all -m file -a "dest=/tmp/testing  mode=700 owner=anand state=directory"
+
+
+##command line with different variables for different hosts
+cat custom_hosts
+[servers]
+192.168.1.62 primary_dns=8.8.8.8
+192.168.1.63 primary_dns=8.8.4.4
+192.168.1.11 primary_dns=8.8.8.8
+
+[servers:vars]
+ansible_user=anand
+
+
+ansible all -i custom_hosts -m command -a "ping -c2 {{ primary_dns }}" -k
+
+
+#Command to List tasks in the playbook
+ansible-playbook  tag_addUser.yml --list-tasks
+playbook: tag_addUser.yml
+
+  play #1 (all): all    TAGS: []
+    tasks:
+      Add a user to the system  TAGS: [DeployUser, adduser]
+      Adding the Authorized keys        TAGS: [DeployUser, KeyAdd
+
+#Checking the syntax of the playbook
+ansible-playbook yum_items.yml --syntax-check
+
+
+#ExtraVars command lines
+- hosts: all
+  become: yes
+
+  tasks:
+  - name: "Installing package"
+    yum:
+      name: "{{ package }}"
+      state: "{{ option }}"
+
+ansible-playbook yum.yml --extra-var package=screen -k -K
+ansible-playbook yum.yml --extra-var "package=screen option=absent" -k -K
+
+
