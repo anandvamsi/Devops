@@ -1,0 +1,12 @@
+- hosts: all
+  become: yes
+
+  tasks:
+  - name: "Installing package"
+    yum:
+      name: screen
+      state: latest
+      
+      
+ >>
+ ansible-playbook yum.yml -k -K
