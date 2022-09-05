@@ -12,7 +12,7 @@
 
   - name: "Copy my web page"
     copy:
-      src: /home/ansibleuser/index.html
+      src:   index.html
       dest: /var/www/html/index.html
     notify:
     - Restart apache2
