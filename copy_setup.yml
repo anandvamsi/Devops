@@ -1,0 +1,8 @@
+- hosts: all
+
+  tasks:
+  - name: "copy with contents"
+    copy:
+      content: "{{ ansible_fqdn }} has been customized using Ansible on the
+      {{ ansible_date_time.date }}\n"
+      dest: /tmp/newfile1
