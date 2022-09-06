@@ -1,0 +1,28 @@
+---
+
+- hosts: all
+  gather_facts: yes
+  become: yes
+
+  tasks:
+  - name: "Install Apache server"
+    yum:
+      name: httpd
+      state: latest
+
+  - name: "Copy my web page"
+    copy:
+      src: index.html
+      dest: /var/www/html/index.html
+    notify:
+    - Restart apache2
+
+  handlers:
+  - include: service_restart.yml
+  
+  >>>>>>>>>>>>>>>>>>> contents of service_restart.yml >>>>>>>>>>>>>>>>>>>>>>>>
+  ---
+- name: "Restart apache2"
+  service:
+    name: httpd
+    state: restarted
