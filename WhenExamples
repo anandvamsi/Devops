@@ -1,0 +1,27 @@
+- name: Example Facts Conditionals 
+  hosts: all
+  vars:
+    supported_os:
+      - RedHat
+      - Fedora
+
+  tasks:
+  - name: Install nginx
+    yum:
+      name: "nginx"
+      state: present
+    when: ansible_facts['distribution'] in supported_os
+    
+    
+  #Multiple Conditions in When
+  hen: (colour=="green" or colour=="red") and (size="small" or size="medium")
+  
+  
+  When multiple conditions needs to true
+  when:
+  - ansible_facts['distribution'] == "Ubuntu"
+  - ansible_facts['distribution_version'] == "20.04"
+  - ansible_facts['distribution_release'] == "bionic"
+  
+  
+  
