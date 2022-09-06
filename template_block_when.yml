@@ -1,0 +1,20 @@
+---
+- hosts: all
+  gather_facts: yes
+
+  vars:
+    new_ip: 192.168.150.131
+    new_name: webapp
+
+
+  tasks:
+
+  - block:
+    - include_vars: 192.168.1.8.yml
+
+    - name: "Copy the the /etc/hosts file"
+      become: yes
+      template:
+        src: hosts.j2
+        dest: /tmp/hosts
+    when: ansible_enp0s3.ipv4.address == "192.168.1.8"
