@@ -42,3 +42,14 @@ Example:
     - { role: create_new_user, username: 'foobar' }
     - vimserver
     
+    
+ #setting facts for all the roles
+- hosts: testdroplets
+  pre_tasks:
+    - set_fact:
+        username: my_username
+  roles:
+    - update
+    - bootstrap_server
+    - create_new_user
+    - vimserver
