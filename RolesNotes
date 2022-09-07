@@ -32,3 +32,13 @@ Example:
 - hosts: all 
   roles:
     - role: webserver
+    
+
+#passing variables with roles
+- hosts: testdroplets
+  roles:
+    - update
+    - bootstrap_server
+    - { role: create_new_user, username: 'foobar' }
+    - vimserver
+    
