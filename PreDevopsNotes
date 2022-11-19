@@ -1,0 +1,54 @@
+Devops
+
+- Why Devops
+- what is meant by Devops
+- Devops Road Map
+- Devops Life cycle.
+- Devops Daily Activities 
+- Devops in JobRole
+- 
+
+Devops Life cycle 
+--------------------
+
+Stage1:- 
+     Plan :- JIRA 
+
+stage2: 
+     code::- Gitlab, Github
+
+stage3:
+    Build:: Ansible, puppet jenkins 
+
+stage4: 
+     Test:: selenium, 
+
+Stage5:
+     Deploy:: Jenkins, Docker,Kubernetes
+
+Stage6:
+      Operate:: Logging_solutions, splunl
+
+stage: 
+      Monitor:: Promethus, cloud monitoring tools
+
+
+Devops in JobRoles:
+
+Devops Engineer/Developer
+Senior Devops Engineer
+Devops Architect/specialist 
+Devops Manager
+
+
+
+In waterfall model
+Its sequential model , where applications will move to next stage after completing current stage
+stages in the waterfall model.
+
+Need to understand the problems associated with WaterFall model.
+
+Agile methadology
+- Each project is broken in multiple chunks
+- All iterations should be part of same time duration (b/w 2 to 8 weeks)
+- At the end of each iteration , a working product should be delivered::- demo time.
