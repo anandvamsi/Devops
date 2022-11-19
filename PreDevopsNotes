@@ -49,6 +49,34 @@ stages in the waterfall model.
 Need to understand the problems associated with WaterFall model.
 
 Agile methadology
+Practice of continious interations of Devops and testing happens.
+
 - Each project is broken in multiple chunks
+
+
+Limitations of Devops Engineer 
+----------------------------------
+
+Developers needs Agility
+Operations needs stability of the applications 
+
+Common problem:-
+works in my laptop, but is it working in other {Dev,testing,production ..etc}. due to
+inconsistancy during the building
+
+
+Solutions 
+In order to solve the Gap/ Limitations of the Agile, introduced a Devops software strategy
+
+Public opinions
+Devops is not technology its a methodology
+
+Devops is a pratice, study of building,evolving and operating for rapidly changing systems at scale
+reduces the gap b/w devlopers and operation team and able to release product in time.
+How this happens:- By using automation and tools involved.
+
+
+
+
 - All iterations should be part of same time duration (b/w 2 to 8 weeks)
 - At the end of each iteration , a working product should be delivered::- demo time.
