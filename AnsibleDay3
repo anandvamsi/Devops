@@ -1,4 +1,5 @@
 
+#Setting up passwordless ssh from Ansible_server to clients
 #Ansible facts
 #Introduction to YAML file
 #Creating first playbooks
@@ -9,6 +10,16 @@
 #Tags
 #extra variables
 #variables precedence
+
+
+#Setting up passwordless ssh
+>>Execute below command from Ansible server
+>>Replace all with client IP
+ssh-copy-id anand@<ClientIP>
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/anand/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+anand@192.168.1.15's password:
 
 
 
