@@ -116,8 +116,18 @@ slaves_IP
 Note: Above will login as the logged user and execute the module
 -m is the module
 
+
+#To list hosts of the group
+#ansible servers --list-hosts
+  hosts (3):
+    192.168.1.14
+    192.168.1.15
+    192.168.1.16
+
+
 #To begin individual server
 ansible -m ping 192.168.150.129
+
 
 
 #if you want to login to login to different user
@@ -141,11 +151,9 @@ SSH password:
 #Shell module
 ansible all -m shell -a "ls -l /tmp"
 ansible all -m shell -a "hostname"
-192.168.150.129 | CHANGED | rc=0 >>
-ubuntu-slave1
 ansible all -m shell -a "uptime"
-192.168.150.129 | CHANGED | rc=0 >>
- 06:31:14 up  4:56,  2 users,  load average: 0.02, 0.09, 0.08
+ansible all -m shell -a "date"
+
 
 
 
