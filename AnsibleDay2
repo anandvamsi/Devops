@@ -194,8 +194,10 @@ fdisk: cannot open /dev/xvda: Permission denied
 #Using sudo privilages
 ansible server2 -m command -a "fdisk -l" --become --ask-become-pass
 
+#To create a user
+ansible app -s -m user -a "name=admin state=present
 
-Installing a package
+#Installing a package
 ansible server2 -m yum -a "name=git state=latest"
 
 
