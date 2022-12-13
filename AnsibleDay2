@@ -128,6 +128,11 @@ Note: Above will login as the logged user and execute the module
 #To begin individual server
 ansible -m ping 192.168.150.129
 
+#Another Method
+ansible newserver -m ping --limit "192.168.1.14"
+
+#Using the wildcard starting with 192
+ansible newserver -m ping --limit "192.*"
 
 
 #if you want to login to login to different user
@@ -195,7 +200,10 @@ fdisk: cannot open /dev/xvda: Permission denied
 ansible server2 -m command -a "fdisk -l" --become --ask-become-pass
 
 #To create a user
-ansible app -s -m user -a "name=admin state=present
+ansible newserver  -m user -a "name=raj1 state=present" -b -K 
+- b stand for become
+-K will as the sudo password
+
 
 #Installing a package
 ansible server2 -m yum -a "name=git state=latest"
