@@ -82,6 +82,7 @@ ansible_selinux
 
 using filters
 ansible localhost  -m setup -a "filter=ansible_distribution*"
+ansible localhost -m setup -a "filter=*ip*"
 
 
 
