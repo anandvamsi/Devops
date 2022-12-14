@@ -3,3 +3,5 @@
 -b :- become
 -become_user  :- become_uesr
 -K, --ask-become-pass :- become_ask_pass
+-f :- forks 
+Ansible abc -a "/sbin/reboot" -f 12
