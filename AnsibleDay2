@@ -93,6 +93,10 @@ webservers[:3]      # == cobweb,webbing,we
 
 
 
+Syntax
+ansible target -i inventory -m module -a "module options"
+
+
 
 
 #Setting up the invetory--> In Master server
