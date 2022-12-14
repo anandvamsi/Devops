@@ -1,3 +1,7 @@
 apt-add-repository ppa:ansible/ansible
 apt-get update
 apt-get install ansible
+
+For Redhat/Centos
+yum install epel-release
+yum install ansible
