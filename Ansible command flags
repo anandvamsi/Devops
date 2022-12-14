@@ -1,0 +1,5 @@
+-i :- inventory
+-u :- remote_user
+-b :- become
+-become_user  :- become_uesr
+-K, --ask-become-pass :- become_ask_pass
