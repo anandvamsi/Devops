@@ -5,3 +5,14 @@
 inventory = hosts
 callback_whitelist = profile_tasks
 deprecation_warnings = false
+
+
+#TO skip the fingerprint 
+ Two ways of doing it 
+ 
+ Method1 :- Either mention it /etc/ansible/ansible.cfg
+ host_key_checking = False
+ 
+ Method2 :-Mention the same inventory
+  [newserver:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
