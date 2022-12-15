@@ -16,3 +16,7 @@ deprecation_warnings = false
  Method2 :-Mention the same inventory
   [newserver:vars]
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
+Method3:- Save it as the enviroenment variable
+export ANSIBLE_HOST_KEY_CHECKING=False
+
