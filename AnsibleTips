@@ -1,5 +1,6 @@
 #To display the time takeby each task there is a setting availble which needs to configure at ansible.cfg 
 
+Tip 1
 // Ansible.cfg
 [defaults]
 inventory = hosts
@@ -7,6 +8,8 @@ callback_whitelist = profile_tasks
 deprecation_warnings = false
 
 
+
+Tip2 
 #TO skip the fingerprint 
  Two ways of doing it 
  
@@ -20,3 +23,8 @@ ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 Method3:- Save it as the enviroenment variable
 export ANSIBLE_HOST_KEY_CHECKING=False
 
+
+Tip3
+if you want to have hosts in multiple groups in ansible 
+ name: This sets up an httpd webserver
+  hosts: web:db
