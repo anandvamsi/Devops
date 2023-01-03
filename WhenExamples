@@ -14,7 +14,10 @@
     
     
   #Multiple Conditions in When
-  hen: (colour=="green" or colour=="red") and (size="small" or size="medium")
+  when: (colour=="green" or colour=="red") and (size="small" or size="medium")
+  
+  object green/medium
+  object red/large
   
   
   When multiple conditions needs to true
