@@ -1,0 +1,34 @@
+AnsibleNotes
+-----------
+#Running Adhoc commands structure 
+Syntax
+ansible host_pattern -m module_name -a "module_options"
+- Modules are reusable,standalone script that can be used by Ansible API or playbooks.
+
+usecases::
+Ansible ad-hoc commands are ideal to perform tasks that are not executed fre-quently such us getting servers
+uptime, retrieving system information, etc.
+
+#To get the Module list
+ansible-doc -l
+ansible-doc ping
+
+#To list the hosts of the Ansible inventory
+ansible development -i myhosts --list-hosts
+ansible production -i myhosts --list-hosts
+
+#Hello world of Ansible:- To test the connectivity
+ansible all -m ping
+
+Examples1:-
+ansible node1 -m command -a "uptime"
+
+Notes; command module do have an issues with pipes and symbols
+You can’t use piping or redirection with the command module, To resolve it we need to use shell module.
+ansible node2 -m shell -a "lscpu | head -n 5"
+
+#Raw Module
+ansible node4 -m raw -a "cat /etc/os-release"
+Raw module which can handles 
+   - Simple commands
+  - Run commands with pipes or redirections
