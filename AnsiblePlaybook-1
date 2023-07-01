@@ -46,6 +46,19 @@ ansible-playbook --list-tasks multiple-plays.yml
     import_tasks: group-tasks.yml            ------import tasks
 
 
+#Import_tasks
+---
+- name: Reusing playbook
+  hosts: all
+  tasks:
+  - name: Reboot the servers
+    debug:
+      msg: "IM in second tasks ..."
+
+  - name: Run first playbook
+    import_playbook: first-playbook.yml
+
+we can replace import_playbook with include.
 
 #Difference between import and include
 The only difference is that the import statements are pre-processed at the time
