@@ -1,0 +1,54 @@
+#What is Ansibleplaybook
+#what is usecase of Ansibleplaybook
+#Introduction to YAML
+#SyntaxCheck and DryRUn
+
+
+Ansible playbooks are ideal to automate complex tasks like sys-
+tem patches, application deployments, firewall configurations, user management,
+
+
+Setting YAM settings for YAML files ~/.vimrc
+autocmd FileType yaml setlocal ai ts=2 sw=2 et
+
+#SyntaxCheck and DRY run
+ansible-playbook --check first-playbook.yml
+
+#To List the tasks of the playbook
+ansible-playbook --list-tasks multiple-plays.yml
+
+
+#Import_tasks and import playbooks
+
+#contents of group-tasks.yml
+
+- name: create developers group
+  group:
+    name: developers
+- name: create security group
+  group:
+    name: security
+- name: create finance group
+  group:
+    name: finance
+>>>>>>>>>>>>>>>>>>>
+- name: first play
+  hosts: all
+  tasks:
+  - name: create a new file
+    file:
+      path: /tmp/foo.conf
+      mode: 0664
+      owner: elliot
+      state: touch
+
+  - name: create groups
+    import_tasks: group-tasks.yml            ------import tasks
+
+
+
+#Difference between import and include
+The only difference is that the import statements are pre-processed at the time
+playbooks are parsed. On the other hand, include statements are processed as they
+are encountered during the execution of the playbook. So, in summary, import is
+static while include is dynamic.
