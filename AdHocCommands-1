@@ -12,6 +12,8 @@ uptime, retrieving system information, etc.
 #To get the Module list
 ansible-doc -l
 ansible-doc ping
+ansible-doc file
+
 
 #To list the hosts of the Ansible inventory
 ansible development -i myhosts --list-hosts
@@ -32,3 +34,6 @@ ansible node4 -m raw -a "cat /etc/os-release"
 Raw module which can handles 
    - Simple commands
   - Run commands with pipes or redirections
+
+# File Module
+ansible all -m file -a "path=/tmp/foo.conf mode=0664 owner=anand state=touch"
