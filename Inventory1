@@ -24,3 +24,4 @@ host_key_checking=False
 
 ansible -i hosts london -m ping
 ansible -i hosts nyc -m ping
+ansible -i hosts all -m ping :: will check agaist all the hosts
