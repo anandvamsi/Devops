@@ -1,0 +1,26 @@
+ansible01 ansible_host=46.101.92.240
+ansible02 ansible_host=159.65.63.218
+ansible03 ansible_host=159.65.63.217
+ansible04 ansible_host=138.68.145.116
+
+[london]
+ansible01
+ansible02
+
+
+[nyc]
+ansible03
+ansible04
+
+[digitalocean:children]
+london
+nyc
+
+[digitalocean:vars]
+ansible_connection=ssh
+ansible_user=root
+ansible_private_key_file=~/.ssh/id_rsa
+host_key_checking=False
+
+ansible -i hosts london -m ping
+ansible -i hosts nyc -m ping
