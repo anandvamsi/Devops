@@ -37,3 +37,7 @@ Raw module which can handles
 
 # File Module
 ansible all -m file -a "path=/tmp/foo.conf mode=0664 owner=anand state=touch"
+
+#To install a package
+$ ansible -i hosts all -m yum -a "name=kpartx state=latest"
+$ ansible -i hosts all -a "uptime"
