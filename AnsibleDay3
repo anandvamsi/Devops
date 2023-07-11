@@ -164,7 +164,8 @@ james:
       - english
 
 
-#Setting log_path for ansible 
+##Setting log_path for ansible
+------------------------------------
 logpath is more like saving the ansible execution logs to log file , by default logs are not saved in any of the 
 
 set the log_path variable in ansible configration file 
