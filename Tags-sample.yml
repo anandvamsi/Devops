@@ -1,0 +1,23 @@
+---
+ - name: Ansible Tags
+   hosts: localhost
+   gather_facts: false
+   tasks:
+     - debug:
+         msg: "This is first task"
+       tags: first
+     - debug:
+         msg: "This is second task"
+       tags: second
+     - debug:
+         msg: "This is third task"
+       tags: third
+     - debug:
+         msg: "This is fourth task"
+       tags: fourth
+
+
+>>>>
+ansible-playbook tags.yml --tags first,
+ansible-playbook tags.yml --tags first,second
+ansible-playbook tags.yml --skip-tags fourth
