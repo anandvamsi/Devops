@@ -1,15 +1,15 @@
-
-#Setting up passwordless ssh from Ansible_server to clients
-#Ansible facts
-#Introduction to YAML file
-#Creating first playbooks
-#Setting log_path in ansible
-#Module reference 
-#Dry Run of playbooks
-#Playbooks with variables
-#Tags
-#extra variables
-#variables precedence
+# Ansible Day 3
+- Setting up passwordless ssh from Ansible_server to clients
+- Ansible facts
+- Introduction to YAML file
+- Creating first playbooks
+- Setting log_path in ansible
+- Module reference 
+- Dry Run of playbooks
+- Playbooks with variables
+- Tags
+- Extra variables
+- variables precedence
 
 
 #Setting up passwordless ssh
