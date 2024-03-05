@@ -1,15 +1,15 @@
-Ansible Day2
+# Ansible Day2
 
-what are inventories
-inventory files
-Configuring inventories
-Inventories var files
+- what are inventories
+- inventory files
+- Configuring inventories
+- Inventories var files
 
 
-Ansible Inventory
+## Ansible Inventory
 Ansible works against multiple systems in your infrastructure at the same time.
- It does this by selecting portions of systems listed in Ansible’s inventory file, which defaults to being saved in the location /etc/ansible/hosts  can specify a different inventory file using the -i <path> option on the command line.
-
+It does this by selecting portions of systems listed in Ansible’s inventory file, which defaults to being saved in the location /etc/ansible/hosts
+can specify a different inventory file using the -i <path> option on the command line.
 
 Example:-
 mail.example.com
