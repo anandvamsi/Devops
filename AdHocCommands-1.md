@@ -8,6 +8,18 @@ ansible host_pattern -m module_name -a "module_options"
 ```
 - Modules are reusable,standalone script that can be used by Ansible API or playbooks.
 
+
+## CommandLine flags
+```bash
+-i :- inventory
+-u :- remote_user
+-b :- become
+-become_user  :- become_uesr
+-K, --ask-become-pass :- become_ask_pass
+-f :- forks 
+Ansible abc -a "/sbin/reboot" -f 12
+```
+
 ```Usecases```::
 Ansible ad-hoc commands are ideal to perform tasks that are not executed fre-quently such us getting servers
 uptime, retrieving system information, etc.
@@ -53,6 +65,8 @@ ansible node4 -m raw -a "cat /etc/os-release"
 ```bash
 ansible all -m file -a "path=/tmp/foo.conf mode=0664 owner=anand state=touch"
 ```
+
+
 
 ## To install a Package
 ```bash
