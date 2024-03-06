@@ -29,7 +29,7 @@ microservices:
 Notes : In this example Name,age,job and skills represent the key value pair.
 skills is a list containing multiple items, each indicated by a hyphen followed by a space.
 
-## YAML over JSON,XAMl
+## YAML over JSON,XAML
 YAML is often preferred for its readability compared to other data serialization formats like JSON or XML, especially when dealing with complex data structures. 
 It's commonly used in configuration files for applications and services, including tools like Kubernetes, Docker, and Ansible.
 
