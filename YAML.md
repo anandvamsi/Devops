@@ -3,7 +3,7 @@
 - It's commonly used for configuration files, data exchange between programming languages,and in various other applications
 where data needs to be easily readable by humans as well as machines.
 
-## Example of YAML
+## Example1 
 ```bash
 # Example YAML document
 name: John Doe
@@ -14,6 +14,18 @@ skills:
   - JavaScript
   - SQL
 ```
+## Example2
+```bash
+microservices:
+  - app: app1
+    port: 80
+    version: 1.2
+
+  - app: app2
+    port: 81
+    version: 2
+```
+
 Notes : In this example Name,age,job and skills represent the key value pair.
 skills is a list containing multiple items, each indicated by a hyphen followed by a space.
 
