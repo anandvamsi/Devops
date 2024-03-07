@@ -181,81 +181,90 @@ ansible all -m shell -a "date"
 ansible all -m file "dest = /tmp/newfolder  mode = 777 owner = user1 group = user1 state = directory" 
 ansible all -m file -a "dest=/tmp/test mode=755 owner=ansibleuser group=ansibleuser state=directory"
 ```
-#copying a single file
+## copying a single file
+```bash
  ansible all -m copy -a "src=/etc/hosts dest=/tmp/hosts
- 
- #copying with content
+ ```
+## copying with content
+ ```bash
  ansible server2 -m copy -a "content='Hello, My name is deepak' dest=~/ctrl_file"
- 
+ ```
 
-#To create a file
+## To create a file
+```bash
  ansible server2 -m file -a "path=/tmp/demo_2.txt state=touch mode=755"
+```
+## To delete the directory
+```bash
+ansible webservers -m file -a "dest=/path/to/c state=absent
+```
 
-#To delete the directory
- ansible webservers -m file -a "dest=/path/to/c state=absent
-
-
-#To Create a directory
+## To Create a directory
+```bash
 ansible server2 -m file -a "path=/tmp/dir_1.txt state=directory"
+```
 
-#To remove a directory
+## To remove a directory
+```bash
 ansible server2 -m file -a "path=/tmp/dir_1.txt state=absent"
+```
 
-
->>>Commands with sudo privilages
+## Commands with sudo privilages
+```bash
 ansible server2 -m command -a "fdisk -l"
 server2 | CHANGED | rc=0 >>
 fdisk: cannot open /dev/xvda: Permission denied
+```
 
-#Using sudo privilages
+## Using sudo privilages
+```bash
 ansible server2 -m command -a "fdisk -l" --become --ask-become-pass
+```
 
-#To create a user
+## To create a user
+```bash
 ansible newserver  -m user -a "name=raj1 state=present" -b -K 
 - b stand for become
 -K will as the sudo password
+```
 
-
-#Installing a package
+## Installing a package
+```bash
 ansible server2 -m yum -a "name=git state=latest"
+```
 
 
-
-#Package based <becoming root user>
+## Package based <becoming root user>
 
 Before this module make sure apt-get update
+```bash
 ansible --become -K all -m  apt -a "name=apache2 state=present"
+```
 
-
-#Install the latest version
+## Install the latest version
+```bash
 ansible all -m apt -a "name=screen state=latest" --become -K
+```
 
-TO remove a package
+## TO remove a package
+```bash
 ansible all -m apt -a "name=screen state=absent" --become -K
+```
 
-
-##Deployment
+## Deployment
+```bash
 ansible all -m git -a "repo=https://github.com/trekhleb/javascript-algorithms.git dest=/tmp/repo
+```
 
 
+## Services
+```bash
+ansible webservers -m service -a "name=apache2 state=started" --become -K
+ansible webservers -m service -a "name=apache2 state=stopped" --become -K
+ansible webservers -m service -a "name=apache2 state=restarted" --become -K
+```
 
-#Services
- ansible webservers -m service -a "name=apache2 state=started" --become -K
- ansible webservers -m service -a "name=apache2 state=stopped" --become -K
- ansible webservers -m service -a "name=apache2 state=restarted" --become -K
-
-
-
-
-
-
-#custom inventory file
+## custom inventory file
+```bash
 ansible all -m ping -i my_custom_inventory
-
-#shll 
-
-
-
-
-#Reference
-https://www.digitalocean.com/community/cheatsheets/how-to-use-ansible-cheat-sheet-guide
+```
