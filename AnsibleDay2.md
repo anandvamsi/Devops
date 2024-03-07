@@ -1,11 +1,19 @@
 # Ansible Day2
 
+- Ansible installation
 - what are inventories
 - inventory files
 - Configuring inventories
 - Inventories var files
 - Ansible connection types.
 
+## Ansible installation
+
+```bash
+sudo yum update
+sudo yum install epel-release
+sudo yum install ansible
+```
 
 ## Ansible Inventory
 Ansible works against multiple systems in your infrastructure at the same time.
