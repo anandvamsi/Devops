@@ -268,3 +268,9 @@ ansible webservers -m service -a "name=apache2 state=restarted" --become -K
 ```bash
 ansible all -m ping -i my_custom_inventory
 ```
+
+## Connections Types of Ansible.
+```Ansible Local```: Ansible Local refers to executing Ansible tasks on the local machine rather than remotely connecting to other hosts. This can be useful for tasks that need to be performed on the machine where Ansible is being run, such as setting up local configurations or managing the local environment.
+
+```Ansible SSH```: Ansible SSH is the method Ansible uses to connect to remote hosts and execute tasks. Ansible relies on SSH (Secure Shell) to securely communicate with and manage remote servers. It uses SSH keys for authentication and typically requires SSH access to be configured on the remote hosts.
+
