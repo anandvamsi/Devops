@@ -4,6 +4,7 @@
 - inventory files
 - Configuring inventories
 - Inventories var files
+- Ansible connection types.
 
 
 ## Ansible Inventory
@@ -11,7 +12,15 @@ Ansible works against multiple systems in your infrastructure at the same time.
 It does this by selecting portions of systems listed in Ansible’s inventory file, which defaults to being saved in the location /etc/ansible/hosts
 can specify a different inventory file using the -i <path> option on the command line.
 
+## Setting up the invetory--> In Master server
+```
+/etc/ansible/hosts
+[webserver]
+slaves_IP
+```
+
 Example:-
+```bash
 mail.example.com
 
 [webservers]
@@ -22,40 +31,45 @@ bar.example.com
 one.example.com
 two.example.com
 three.example.com
-
+```
 
 Note:: Its ok to put more than one system in one or more groups.
 for instance a server could be both a webserver and a dbserver
 
 
 Security reason if ssh port is different we need to mention that along with hostname
+```bash
 one.example.com:678
+```
 
 
 
-Other examples of inventory
+## Other examples of inventory example
+```
 [webservers]
 www[01:50].example.com
 
-
 [databases]
 db-[a:f].example.com
-
-#Ansible host with connection variables
+```
+## Ansible host with connection variables
+```bash
 [targets]
 localhost              ansible_connection=local
-other1.example.com     ansible_connection=ssh        ansible_user=mpdehaan
-other2.example.com     ansible_connection=ssh        ansible_user=mdehaa
+other1.example.com     ansible_connection=ssh        ansible_user=user1
+other2.example.com     ansible_connection=ssh        ansible_user=user2
+```
 
-
-Inventory with variables.
+## Inventory with variables.
+```bash
 [atlanta]
 host1 http_port=80 maxRequestsPerChild=808
 host2 http_port=303 maxRequestsPerChild=909
+```
 
 
-
-Group of groups and variables
+## Group of groups and variables
+```bash
 [atlanta]
 host1
 host2
@@ -73,12 +87,11 @@ some_server=foo.southeast.example.com
 halon_system_timeout=30
 self_destruct_countdown=60
 escape_pods=2
+```
 
 
-
-
-Other examples for iterations
-------------------------------
+## Other examples for iterations
+```bash
 [webservers]
 cobweb
 webbing
@@ -90,24 +103,18 @@ webservers[0:2]     # == webservers[0],webservers[1]
                     # == cobweb,webbing
 webservers[1:]      # == webbing,weber
 webservers[:3]      # == cobweb,webbing,we
+```
 
 
-
-Syntax
+## Syntax for executing Ansible CLI
+```bash
 ansible target -i inventory -m module -a "module options"
+```
 
 
 
-
-#Setting up the invetory--> In Master server
-/etc/ansible/hosts
-[webserver]
-slaves_IP
-
-
-
-#Connectivity checking 
-#Executions in the master server
+## First CLI to check the connectivity
+```bash
 ~$ ansible all -m ping
 192.168.150.129 | SUCCESS => {
     "ansible_facts": {
@@ -117,33 +124,39 @@ slaves_IP
     "ping": "pong"
 }
 
-Note: Above will login as the logged user and execute the module
--m is the module
+```
 
+## To list hosts of the group
+```bash
 
-#To list hosts of the group
-#ansible servers --list-hosts
+ansible servers --list-hosts
   hosts (3):
     192.168.1.14
     192.168.1.15
     192.168.1.16
+```
 
-
-#To begin individual server
+## To begin individual server
+```bash
 ansible -m ping 192.168.150.129
-
-#Another Method
+```
+## Another Method
+```bash
 ansible newserver -m ping --limit "192.168.1.14"
+```
 
-#Using the wildcard starting with 192
+## Using the wildcard starting with 192
+```bash
 ansible newserver -m ping --limit "192.*"
+```
 
-
-#if you want to login to login to different user
+## if you want to login to login to different user
+```bash 
 ansible all -m ping -u <username>
+```
 
-
-#Using Ask password method
+## Using Ask password method
+```bash
 ansible all -m ping --ask-pass
 SSH password:
 192.168.150.129 | SUCCESS => {
@@ -153,27 +166,21 @@ SSH password:
     "changed": false,
     "ping": "pong"
 }
+```
 
-
-
-
-#Shell module
+## Shell module
+```
 ansible all -m shell -a "ls -l /tmp"
 ansible all -m shell -a "hostname"
 ansible all -m shell -a "uptime"
 ansible all -m shell -a "date"
+```
 
-
-
-
-"
-
-
-##File based commands
-##reating a directory
- ansible all -m file "dest = /tmp/newfolder  mode = 777 owner = user1 group = user1 state = directory" 
- ansible all -m file -a "dest=/tmp/test mode=755 owner=ansibleuser group=ansibleuser state=directory"
-
+## File based commands
+```bash
+ansible all -m file "dest = /tmp/newfolder  mode = 777 owner = user1 group = user1 state = directory" 
+ansible all -m file -a "dest=/tmp/test mode=755 owner=ansibleuser group=ansibleuser state=directory"
+```
 #copying a single file
  ansible all -m copy -a "src=/etc/hosts dest=/tmp/hosts
  
