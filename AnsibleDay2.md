@@ -15,6 +15,13 @@ sudo yum install epel-release
 sudo yum install ansible
 ```
 
+## Ansible installation in Amazon Linux
+
+```bash
+amazon-linux-extras install epel
+yum install ansible
+```
+
 ## Ansible Inventory
 Ansible works against multiple systems in your infrastructure at the same time.
 It does this by selecting portions of systems listed in Ansible’s inventory file, which defaults to being saved in the location /etc/ansible/hosts
