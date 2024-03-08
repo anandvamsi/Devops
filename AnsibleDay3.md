@@ -23,12 +23,12 @@ anand@192.168.1.15's password:
 
 
 
-#Ansible facts
+## Ansible facts
 Ansible facts are nothing but system properties or pieces of information about remote nodes that you have connected to. This information includes the System architecture, the OS version, BIOS information, system time and date, system uptime, IP address, and hardware information to mention just a few.
 
 Ansible facts are handy in helping the system administrators which operations to carry out, for instance, depending on the operating system, they are able to know which software packages need to be installed, and how they are to be configured, etc
 
-
+```bash
  ansible all  -m setup
 
  ansible all -m setup
@@ -57,7 +57,7 @@ Ansible facts are handy in helping the system administrators which operations to
 
 .................................
 ..................................
-
+```
 
 Use case:
 While deploying a NTP application/hosts file
@@ -70,8 +70,9 @@ While deploying a NTP application/hosts file
 </html>
 
 
- Facts section data:
- ansible_architecture
+## Facts section data:
+```bash
+ansible_architecture
 ansible_bios_date
 ansible_bios_version
 ansible_date_time
@@ -79,14 +80,14 @@ ansible_machine
 ansible_memefree_mb
 ansible_os_family
 ansible_selinux
+```
 
-using filters
+## using filters
+```bash
 ansible localhost  -m setup -a "filter=ansible_distribution*"
 ansible localhost -m setup -a "filter=*ip*"
-
-
-
-
+```
+```bash
 ansibleuser@ubuntu-master:~/playbooks$ ansible localhost  -m setup -a "filter=ansible_distribution*"
 localhost | SUCCESS => {
     "ansible_facts": {
@@ -110,14 +111,15 @@ localhost | SUCCESS => {
     },
     "changed": false
 }
+```
 
 
 
 
-
-##Creating custom facts
-#mkdir -p /etc/ansible/facts.d
-# vim /etc/ansible/facts.d/date_time.fact
+## Creating custom facts
+```bash
+mkdir -p /etc/ansible/facts.d
+vim /etc/ansible/facts.d/date_time.fact
 
 #!/bin/bash
 DATE=`date`
@@ -129,11 +131,11 @@ ansible localhost -m setup | grep date
         "ansible_bios_date": "07/31/2013",
         "ansible_date_time": {
             "date": "2021-01-12",
-
+```
 
 YAML
- Ansible uses YAML because it is very easy for humans to understand, read and write when compared to other data formats like XML and JSON
- YAML uses simple key-value pair to represent the data.
+Ansible uses YAML because it is very easy for humans to understand, read and write when compared to other data formats like XML and JSON
+YAML uses simple key-value pair to represent the data.
 
  Example:- A student record:
 --- #Optional YAML start syntax 
@@ -209,10 +211,9 @@ Variable precedence
 
 
 
+## Tags
 
-
-
-
-##Tags
+```bash
 ansible-playbook playbooks/PLAYBOOK_NAME.yml --tags 'install'
 ansible-playbook playbooks/PLAYBOOK_NAME.yml --skip-tags 'sudoers'
+```
