@@ -24,7 +24,15 @@ anand@192.168.1.15's password:
 
 
 ## Ansible facts
-Ansible facts are nothing but system properties or pieces of information about remote nodes that you have connected to. This information includes the System architecture, the OS version, BIOS information, system time and date, system uptime, IP address, and hardware information to mention just a few.
+Ansible facts are nothing but system properties or pieces of information about remote nodes that you have connected to. This information includes 
+- System architecture, 
+- OS version
+- BIOS information
+- system time
+- date
+- system uptime
+- IP address
+- Hardware information.
 
 Ansible facts are handy in helping the system administrators which operations to carry out, for instance, depending on the operating system, they are able to know which software packages need to be installed, and how they are to be configured, etc
 
@@ -113,6 +121,15 @@ localhost | SUCCESS => {
 }
 ```
 
+## Example of Including ansible facts in a playbook
+```bash
+- name: Example Playbook
+  hosts: all
+  tasks:
+    - name: Display OS type
+      debug:
+        msg: "The operating system is {{ ansible_facts['os_family'] }}"
+```
 
 
 
