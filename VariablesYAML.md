@@ -102,3 +102,18 @@
       debug:
         var: other_variable
 ```
+
+## Understanding the variable precedence 
+```bash
+Variable precedence
+--------------------
+1.-e switch 
+2. vars in role
+3. vars in play
+4. hosts vars
+5. groups vars
+6 defaults in role
+
+1. being the heighest precedence and 6.Being the lowest precedence
+
+```
