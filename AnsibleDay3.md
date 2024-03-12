@@ -185,29 +185,50 @@ if the above method didt work follow this:-
 You need to signout and sign in before executing the playbook.
 
 
-###Syntax Check and Dry Run of playbooks
+## Ansible Playbook
+An Ansible playbook is a configuration file written in YAML (YAML Ain't Markup Language) format used to define a set of tasks to be executed by Ansible, an open-source automation tool. Playbooks are at the heart of Ansible's configuration management system and are used to automate tasks such as provisioning servers, deploying applications, configuring software, and more.
+
+## Example of Ansible playbook
+```bash
+---
+- name: Example Playbook
+  hosts: web_servers
+  become: true
+  tasks:
+    - name: Ensure Apache is installed
+      yum:
+        name: httpd
+        state: present
+
+    - name: Ensure Apache is running
+      service:
+        name: httpd
+        state: started
+```
+## Dissect the playbook
+```bash
+```name``` field specifies the name of the playbook.
+```hosts``` field specifies the target hosts where the playbook tasks will be executed. These hosts can be defined in an Ansible inventory file.
+```become``` field specifies whether to execute tasks with root privileges (using sudo).
+```Tasks``` section contains a list of tasks to be executed.
+Each task consists of a name describing the task and a module (such as yum or service) with its corresponding parameters.
+```
+
+
+### Syntax Check and Dry Run of playbooks
 ----------------------------
-Syntax Check
+```bash
 ansible-playbook playbooks/PLAYBOOK_NAME.yml --syntax-check
+```
 
-DryRun
+## DryRun
 Check mode is just a simulation, and if you have steps that use conditionals that depend on the results of prior commands, it may be less useful for you. However it is great for one-node-at-time basic configuration management use case
-
+```bash
 ansible-playbook  WithItemMultiPathFileCopy.yaml  --check
+```
 
 
 
-
-Variable precedence
---------------------
-1.-e switch 
-2. vars in role
-3. vars in play
-4. hosts vars
-5. groups vars
-6 defaults in role
-
-1. being the heighest precedence and 6.Being the lowest precedence
 
 
 
