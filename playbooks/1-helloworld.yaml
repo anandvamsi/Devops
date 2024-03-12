@@ -3,6 +3,6 @@
     greetings: "Hello world"
 
   tasks:
-  - name: "My frist program"
+  - name: "My first program"
     debug:
       msg: "{{ greetings }}"
