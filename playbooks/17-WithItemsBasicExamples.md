@@ -1,3 +1,11 @@
+# Loops and with_items
+
+In Ansible, both loops and with_items serve the same purpose of iterating over a list of items and executing tasks for each item. 
+However, they are implemented differently and have different levels of support depending on the Ansible version.
+
+
+## Examples of with items and loops
+```bash
 - name: Execute a command with different arguments
   command: "echo {{ item }}"
   with_items:
@@ -29,3 +37,4 @@
     - /var/www/html
     - /etc/nginx/sites-available
     - /etc/nginx/sites-enabled
+```
