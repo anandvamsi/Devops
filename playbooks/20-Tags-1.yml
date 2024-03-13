@@ -1,0 +1,28 @@
+---
+- name: Tag example
+  gather_facts: no
+  hosts: localhost
+
+  tasks:
+
+  - name: create multiple files from a location
+    file:
+      path: /tmp/{{ item }}
+      state: touch
+    loop:
+      - file1
+      - file2
+    tags:
+    - create_file
+
+  - name: delete multiple files from a locatoion
+    file:
+      path: /tmp/{{ item }}
+      state: absent
+    loop:
+      - file1
+      - file2
+    tags:
+    - delete_file
+
+# ansible-play tags1.yml --tag=create_file
