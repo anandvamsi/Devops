@@ -150,37 +150,7 @@ ansible localhost -m setup | grep date
             "date": "2021-01-12",
 ```
 
-YAML
-Ansible uses YAML because it is very easy for humans to understand, read and write when compared to other data formats like XML and JSON
-YAML uses simple key-value pair to represent the data.
 
- Example:- A student record:
---- #Optional YAML start syntax 
-james: 
-  name: james john 
-  rollNo: 34 
-  div: B 
-  sex: male
-
-## Representing a list
- ---
-countries:  
-   - America 
-   - China 
-   - Canada 
-   - Iceland
-
-## With dictonary 
-
-james: 
-   name: james john 
-   rollNo: 34 
-   div: B 
-   sex: male 
-   likes: 
-      - maths 
-      - physics 
-      - english
 
 
 ##Setting log_path for ansible
@@ -246,12 +216,31 @@ ansible-playbook  WithItemMultiPathFileCopy.yaml  --check
 
 
 
-
-
-
 ## Tags
 
+In Ansible, tags allow you to selectively ```run specific tasks or plays within a playbook```. 
+Tags are defined within tasks or plays and can be applied to include or exclude those tasks or plays during playbook execution. Here are some examples of using tags in Ansible
 ```bash
-ansible-playbook playbooks/PLAYBOOK_NAME.yml --tags 'install'
+- name: Main playbook
+  hosts: all
+  tags: main
+
+  tasks:
+    - name: Task 1
+      debug:
+        msg: "This is Task 1"
+      tags:
+        - task1
+    - name: Task 2
+      debug:
+        msg: "This is Task 2"
+      tags:
+        - task2      
+```
+
+
+
+```bash
+ansible-playbook playbooks/PLAYBOOK_NAME.yml --tags 'task1'
 ansible-playbook playbooks/PLAYBOOK_NAME.yml --skip-tags 'sudoers'
 ```
