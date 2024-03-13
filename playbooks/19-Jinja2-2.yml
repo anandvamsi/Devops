@@ -1,0 +1,12 @@
+---
+- name: Script for jinja2
+  hosts: localhost
+  gather_facts: no
+  vars:
+    values: ['100','220','300','400','600']
+
+  tasks:
+    - name: A loop example
+      template:
+         src: example2.j2
+         dest: /tmp/example2
