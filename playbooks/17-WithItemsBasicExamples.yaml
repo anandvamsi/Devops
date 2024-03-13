@@ -1,0 +1,31 @@
+- name: Execute a command with different arguments
+  command: "echo {{ item }}"
+  with_items:
+    - "Hello"
+    - "World"
+
+- name: Copy multiple files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { src: '/path/to/file1.txt', dest: '/tmp/file1.txt' }
+    - { src: '/path/to/file2.txt', dest: '/tmp/file2.txt' }    
+
+- name: Start multiple services
+  service:
+    name: "{{ item }}"
+    state: started
+  with_items:
+    - apache2
+    - mysql
+    - nginx    
+
+- name: Create multiple directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - /var/www/html
+    - /etc/nginx/sites-available
+    - /etc/nginx/sites-enabled
