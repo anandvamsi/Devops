@@ -1,0 +1,13 @@
+- name: Create a directories using loop
+  host: localhost
+  gather_facts: no
+  
+  tasks:
+  - name: Create multiple directories
+    file:
+      path: "{{ item }}"
+      state: directory
+    with_items:
+      - /var/www/html
+      - /etc/nginx/sites-available
+      - /etc/nginx/sites-enabled
