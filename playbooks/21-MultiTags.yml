@@ -1,0 +1,13 @@
+---
+- name: Example of tag2
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+  - name: Restart Apached webserver
+    service:
+      name: httpd
+      state: restarted
+    tags:
+      - restart_apache
+      - never
