@@ -10,5 +10,4 @@
         src: example.j2
         dest: /tmp/example
         
-###contents of example.j2########
-Hi version is {{ version_number }} and the server is {{ server }}
+
