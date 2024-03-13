@@ -1,0 +1,9 @@
+hosts: localhost
+gather_facts: no
+tasks:
+- name: Copy multiple files
+  copy:
+    src: "{{ item }}"
+    dest: /tmp/
+  with_fileglob:
+    - /path/to/files/*
