@@ -1,0 +1,10 @@
+---
+host: localhost
+gather_facts: no
+become: yes
+tasks:
+- name: Restart Apache if configuration file is changed
+  service:
+    name: apache2
+    state: restarted
+  when: ansible_facts['distribution'] == 'Ubuntu' and ansible_facts['distribution_major_version'] == '20.04'
