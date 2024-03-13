@@ -1,0 +1,13 @@
+- name: Adding users via loop
+  host: localhost
+  gather_facts: no
+  
+  tasks:
+  - name: Ensure users exist
+    user:
+      name: "{{ item.name }}"
+      state: present
+    loop:
+      - { name: 'user1', uid: 1001 }
+      - { name: 'user2', uid: 1002 }
+      - { name: 'user3', uid: 1003 }
