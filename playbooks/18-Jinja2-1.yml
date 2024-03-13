@@ -1,0 +1,14 @@
+- hosts: localhost
+  gather_facts: no
+  vars:
+    version_number: '10.4'
+    server: 'redhat'
+
+  tasks:
+    - name: Jinja2 example
+      template:
+        src: example.j2
+        dest: /tmp/example
+        
+###contents of example.j2########
+Hi version is {{ version_number }} and the server is {{ server }}
