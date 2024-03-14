@@ -1,0 +1,14 @@
+- name: "To implement Extra vars"
+  hosts: localhost
+  become: yes
+
+  tasks:
+  - name: "Installing package"
+    yum:
+      name: "{{ package }}"
+      state: "{{ option }}"
+      
+     
+
+ #>>>>>
+ #ansible-playbook yum.yml -e "package=vim option=absent"  -k -K
