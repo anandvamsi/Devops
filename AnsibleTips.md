@@ -24,7 +24,7 @@ Method3:- Save it as the enviroenment variable
 export ANSIBLE_HOST_KEY_CHECKING=False
 ```
 
-## if we need hosts in both the inventory groups.
+## 3.If we need hosts in both the inventory groups.
 ```bash
 if you want to have hosts in multiple groups in ansible 
  name: This sets up an httpd webserver
