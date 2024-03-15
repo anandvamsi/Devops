@@ -1,4 +1,4 @@
-Vault:-
+# Vault:-
 This feature of Ansible allows you to keep your sensitive data encrypted like passwords and keys.
 • Ansible provide a command line tool ansible-vault for edit sensitive files.
 • When you run a playbook then command line flag -ask-vault-pass or -vault-password-file can be used.
