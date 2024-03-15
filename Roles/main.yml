@@ -1,0 +1,11 @@
+---
+
+- name: "Install the httpd webserver"
+  hosts: localhost
+  gather_facts: no
+  become: yes
+
+  roles:
+    - role:  apache1
+      vars:
+        content: 'apache1'

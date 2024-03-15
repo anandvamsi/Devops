@@ -1,0 +1,17 @@
+---
+#- name: "Install htttpd webserver"
+#  yum:
+#    name: httpd
+#    state: latest
+  
+- name: "Enable the httpd daemon"
+  service:
+    name: httpd
+    enabled: yes
+
+- name: "Copying the config file"
+  copy:
+    src: httpd.conf
+    dest: /etc/httpd/conf/httpd.conf
+  notify:
+  - Restart_apache 
