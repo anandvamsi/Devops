@@ -9,3 +9,6 @@
   - name: "Placing the var files values"
     debug:
       msg: "The value is {{ password_var }}"
+
+#ansible-playbook vault.yaml  --ask-vault-pass
+#password is Raj123
