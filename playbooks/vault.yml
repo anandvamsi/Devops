@@ -1,0 +1,11 @@
+---
+- name: "Encrypting a var file"
+  hosts: localhost
+  gather_facts: no
+  vars_files:
+    - datavars.yml
+
+  tasks:
+  - name: "Placing the var files values"
+    debug:
+      msg: "The value is {{ password_var }}"
