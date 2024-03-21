@@ -1,0 +1,5 @@
+---
+package_list:
+  - vim
+  - telnet
+  - screen
