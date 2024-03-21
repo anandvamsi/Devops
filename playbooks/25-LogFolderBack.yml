@@ -1,0 +1,14 @@
+---
+
+- name: "compress 100 log files folder"
+  hosts: localhost
+  gather_facts: no
+
+
+  tasks:
+    - name: "Compression"
+      shell: tar -cvzf logfolder.tar.gz logfolder
+
+
+    - name: "Move the compressed file"
+      shell: mv logfolder.tar.gz /tmp
