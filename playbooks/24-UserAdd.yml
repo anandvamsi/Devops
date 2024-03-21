@@ -1,0 +1,20 @@
+---
+- name: "Adding users with group dev team"
+  hosts: localhost
+  become: yes
+
+
+  tasks:
+    - name: "Create a group devteam"
+      group:
+        name: devteam
+        state: present
+
+    - name: "Adding user"
+      user:
+        name: "{{ item.name }}"
+        group: "{{ item.group }}"
+        state: present
+      loop:
+        - { name: 'user1', group: 'devteam' }
+        - { name: 'user2', group: 'devteam' }
