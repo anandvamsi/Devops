@@ -1,0 +1,13 @@
+- name: "Install packages from the list"
+  hosts: localhost
+  gather_facts: no
+  vars_files:
+    - packages.yml
+
+
+  tasks:
+    - name: "Install the packages"
+      yum:
+        name: "{{ item }}"
+        state: installed
+      with_items: "{{ package_list }}"
