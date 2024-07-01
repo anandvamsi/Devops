@@ -73,7 +73,7 @@ While deploying a NTP application/hosts file
 <html>
 <center>
    <h1> The hostname of this webserver is {{ ansible_hostname }}</h1>
-   <h3> It is running on {{ ansible_os_family}}system </h3>
+   <h3> It is running on {{ ansible_os_family }}system </h3>
 </center>
 </html>
 
