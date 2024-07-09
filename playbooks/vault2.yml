@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  gather_facts: no
+
+  tasks:
+  - name: "Copy secret data"
+    copy:
+      src: secret-data
+      dest: /tmp/secret-data
