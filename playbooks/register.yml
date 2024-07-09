@@ -1,0 +1,17 @@
+---
+- name: Check Disk Space Example
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: Check free disk space
+      shell: df -h /junk
+      register: disk_space_output
+      ignore_errors: yes
+
+    - name: Print disk space output
+      debug:
+        var: disk_space_output.stderr
+
+    - name: Print disk space output stdout
+      debug:
+        var: disk_space_output.stdout_lines
