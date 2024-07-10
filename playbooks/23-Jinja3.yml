@@ -1,0 +1,11 @@
+---
+- name: Example playbook using Jinja2 template with if condition
+  hosts: localhost
+  vars:
+    user: "John"
+    user_role: "admin"
+  tasks:
+    - name: Create a configuration file from a template
+      template:
+        src: templates/config.j2
+        dest: /tmp/config.txt
