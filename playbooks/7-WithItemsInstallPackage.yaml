@@ -7,7 +7,7 @@
 
   tasks:
   - name: "Install the package"
-    apt:
+    yum:
       name: "{{ item }}"
       state: present
     with_items:

@@ -6,8 +6,8 @@
 
   tasks:
   - name: "Install Apache server"
-    apt:
-      name: apache2
+    yum:
+      name: httpd
       state: latest
 
   - name: "Copy my web page"
@@ -20,6 +20,6 @@
   handlers:
   - name: "Restart apache2"
     service:
-      name: apache2
+      name: httpd
       state: restarted
 

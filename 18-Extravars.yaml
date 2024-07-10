@@ -5,19 +5,19 @@
 
   tasks:
   - name: "Install apache server"
-    apt:
-      name: apache2
+    yum:
+      name: httpd
       state: latest
 
   - name: "Restart the service"
     service:
-      name: apache2
+      name: httpd
       state: restarted
 
 
->>Execute the playbook with extra vars
-ansible-playbook  extravars.yaml --extra-vars extra_var=192.168.150.131
+#>>Execute the playbook with extra vars
+#ansible-playbook  extravars.yaml --extra-vars extra_var=192.168.150.131
 
-with -e option 
-ansible-playbook  extravars.yaml -e extra_var=192.168.150.131
+#with -e option 
+#ansible-playbook  extravars.yaml -e extra_var=192.168.150.131
 

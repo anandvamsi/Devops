@@ -4,15 +4,15 @@
   vars_files:
     - packages.yml
 
-   vars_prompt:
-     - name: localpath
-       prompt: Enter the path
+  vars_prompt:
+    - name: localpath
+      prompt: Enter the path
 
 
   tasks:
   - name: "Install a package"
     debug:
-      msg: "The name of the package from the variable file {{ package }}"
+      msg: "The name of the package from the variable file {{ package_list }}"
 
   - name: "Copy the config file"
     copy:
@@ -20,6 +20,3 @@
       dest: /tmp/
 
 
->>>>--------------packages.yml------------->>>
----
-package: finger

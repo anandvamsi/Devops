@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  gather_facts: no
+
+
+  tasks:
+  - name: "Copy vault file"
+    copy:
+      src: secret-data
+      dest: /tmp/

@@ -6,6 +6,4 @@
   become: yes
 
   roles:
-    - role:  apache1
-      vars:
-        content: 'apache1'
+    - role:  apache2

@@ -1,14 +1,14 @@
 ---
 
-- hosts: all
-  gather_facts: yes
+- hosts: localhost
+  gather_facts: no
   become: yes
 
   tasks:
-  - name: "Install Apache server"
-    yum:
-      name: httpd
-      state: latest
+#  - name: "Install Apache server"
+#    yum:
+#      name: httpd
+#      state: latest
 
   - name: "Copy my web page"
     copy:
@@ -20,9 +20,3 @@
   handlers:
   - include: service_restart.yml
   
-  >>>>>>>>>>>>>>>>>>> contents of service_restart.yml >>>>>>>>>>>>>>>>>>>>>>>>
-  ---
-- name: "Restart apache2"
-  service:
-    name: httpd
-    state: restarted

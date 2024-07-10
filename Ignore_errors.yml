@@ -1,0 +1,15 @@
+---
+- name: Example Playbook with ignore_errors
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: Attempt to create a directory (will fail intentionally)
+      file:
+        path: /data
+        state: directory
+#      ignore_errors: yes
+
+    - name: Print a message after attempting directory creation
+      debug:
+        msg: "Continuing playbook execution after attempting directory creation"
+
